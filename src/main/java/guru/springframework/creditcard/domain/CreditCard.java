@@ -7,14 +7,15 @@ import jakarta.persistence.*;
  * Created by jt on 6/27/22.
  */
 @Entity
-@EntityListeners(CreditJPACallback.class)
+//@EntityListeners(CreditJPACallback.class)
 public class CreditCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @EncryptedString
+    //@EncryptedString
+    @Convert(converter = CreditCardConverter.class)
     private String creditCardNumber;
 
     private String cvv;
