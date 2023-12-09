@@ -7,6 +7,7 @@ import jakarta.persistence.*;
  * Created by jt on 6/27/22.
  */
 @Entity
+@EntityListeners(CreditJPACallback.class)
 public class CreditCard {
 
     @Id
