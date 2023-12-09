@@ -37,7 +37,7 @@ class CreditCardRepositoryTest {
         creditCard.setExpirationDate("12/2028");
 
         CreditCard savedCC = creditCardRepository.saveAndFlush(creditCard);
-        System.out.println("Getting CC from database: " + creditCard.getCreditCardNumber());
+        System.out.println("Getting CC from database: " + savedCC.getCreditCardNumber());
         System.out.println("CC Encrypted: " + encryptionService.encrypt(CREDIT_CARD));
 
         Map<String, Object> dbRow = jdbcTemplate.queryForMap("SELECT * FROM credit_card " +
