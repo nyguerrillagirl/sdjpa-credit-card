@@ -1,6 +1,7 @@
 package guru.springframework.creditcard.repositories;
 
 import guru.springframework.creditcard.domain.CreditCard;
+import guru.springframework.creditcard.services.EncryptionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -19,6 +20,9 @@ class CreditCardRepositoryTest {
     @Autowired
     CreditCardRepository creditCardRepository;
 
+    @Autowired
+    EncryptionService encryptionService;
+
     @Test
     void testSaveAndStore() {
         CreditCard creditCard = new CreditCard();
@@ -27,7 +31,9 @@ class CreditCardRepositoryTest {
         creditCard.setExpirationDate("12/2028");
 
         CreditCard savedCC = creditCardRepository.saveAndFlush(creditCard);
-        System.out.println("Getting CC from database");
+        System.out.println("Getting CC from database: " + creditCard.getCreditCardNumber());
+        System.out.println("CC Encrypted: " + encryptionService.encrypt(CREDIT_CARD));
+
         CreditCard fetchedCC = creditCardRepository.findById(savedCC.getId()).get();
 
         assertThat(savedCC.getCreditCardNumber()).isEqualTo(fetchedCC.getCreditCardNumber());
