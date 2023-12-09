@@ -32,7 +32,6 @@ class CreditCardRepositoryTest {
     JdbcTemplate jdbcTemplate;
 
     @Test
-    @Disabled
     void testSaveAndStore() {
         CreditCard creditCard = new CreditCard();
         creditCard.setCreditCardNumber(CREDIT_CARD);
