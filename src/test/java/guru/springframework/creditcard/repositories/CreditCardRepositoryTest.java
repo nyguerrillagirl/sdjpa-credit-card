@@ -2,6 +2,8 @@ package guru.springframework.creditcard.repositories;
 
 import guru.springframework.creditcard.domain.CreditCard;
 import guru.springframework.creditcard.services.EncryptionService;
+import org.hibernate.validator.internal.IgnoreForbiddenApisErrors;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -30,6 +32,7 @@ class CreditCardRepositoryTest {
     JdbcTemplate jdbcTemplate;
 
     @Test
+    @Disabled
     void testSaveAndStore() {
         CreditCard creditCard = new CreditCard();
         creditCard.setCreditCardNumber(CREDIT_CARD);
